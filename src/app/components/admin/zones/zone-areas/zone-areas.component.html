@@ -1,0 +1,70 @@
+<div class="row mt-5">
+  <div class="col-8">
+    <h3>Areas In Zone </h3>
+
+    <table *ngIf="!isLoading" class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Area Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let zz of zoneAreas; let i = index;">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{zz.name}}</td>
+        <td>
+          <button role="button" (click)="editZone(zz)" class="btn btn-outline-primary mr-1">Edit</button>
+          <button role="button" (click)="deleteZoneArea(zz)" class="btn btn-outline-danger">Remove</button></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div  *ngIf="isLoading"  class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="col-4 p-3">
+    <div *ngIf="!editMode" style=" position: -webkit-sticky;   position: sticky;  top: 0;" class="card p-3">
+      <h2>Add new Zone Area</h2>
+      <form #zoneAreaForm="ngForm" (ngSubmit)="addZoneArea()">
+        <div class="m-3">
+          <div class="form-group">
+            <label>Zone Area Name</label>
+            <input
+              class="form-control"
+              type="text" [(ngModel)]="model.name" name="name" required/>
+          </div>
+        </div>
+        <div>
+          <button class="m-3 btn btn-outline-info" [disabled]="!zoneAreaForm.valid" type="submit">Add Zone Area</button>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="editMode" style=" position: -webkit-sticky;   position: sticky;  top: 0;" class="card p-3">
+      <h2>Edit Zone</h2>
+      <form #zoneAreaF="ngForm" (ngSubmit)=" submitZoneEdits(zoneAreaF)">
+        <div class="m-3">
+          <div class="form-group">
+            <label>Zone Area Name</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="zoneToEdit.name"
+              name="name" required/>
+          </div>
+        </div>
+        <div>
+          <button class="m-3 btn btn-outline-info" [disabled]="!zoneAreaF.valid" type="submit" >Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

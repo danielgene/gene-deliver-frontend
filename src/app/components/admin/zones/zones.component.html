@@ -1,0 +1,30 @@
+<div>
+  <button class="btn btn-primary m-3" [routerLink]="['/add-zone']">Add Zone</button>
+  <button class="btn btn-success m-3" [routerLink]="['/assign-zone']">Assign Zone</button>
+
+  <div class="">
+    <table class="table table-hover table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Zone Name</th>
+        <th scope="col">Is Free</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let zone of zones; let i = index">
+        <th scope="row">{{zone.id}}</th>
+        <td>{{zone.name}}</td>
+        <td>{{zone.isZoneFree}}</td>
+        <td>
+          <a class="btn btn-outline-info" routerLink="/zone-areas/{{zone.id}}">View Zone Areas</a>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</div>

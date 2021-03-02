@@ -1,0 +1,118 @@
+<mat-tab-group>
+  <mat-tab label="All Deliveries">
+    <div *ngIf="isAdmin">
+      <a class="m-3" mat-raised-button (click)="exportViewDeliveries()">Export All</a>
+    </div>
+
+    <app-all-deliveries [displayedColumns]="displayedColumns"></app-all-deliveries>
+  </mat-tab>
+
+  <mat-tab label="In Progress">
+    <div class="container-fluid">
+      <button mat-raised-button class="m-2" (click)="exportInProgress()">Export</button>
+    </div>
+    <table id="table-one" class="table  table-bordered table-responsive">
+      <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Customer Address</th>
+        <th>Phone Number</th>
+        <th>PolicyID</th>
+        <th>Policy Transaction Date</th>
+        <th>Policy Amount</th>
+        <th>Agent Name</th>
+        <th>Zone</th>
+        <th>Start Time</th>
+        <th>Finish Time</th>
+        <th>Status</th>
+        <th>Driver</th>
+        <th>Duration</th>
+        <th>Comments</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let delivery of inProgress">
+        <td>{{delivery.customerFirstName}} {{delivery.customerLastName}}</td>
+        <td>{{delivery.addressLine1}}, {{delivery.addressLine2}}</td>
+        <td>{{delivery.phoneNumber}}</td>
+        <td>{{delivery.policyID}}</td>
+        <td>{{delivery.policyTransactionDate}}</td>
+        <td>{{delivery.policyAmount}}</td>
+        <td>{{delivery.agentName}}</td>
+        <td>{{delivery.zoneArea.name}}</td>
+        <td>{{delivery?.startTime | date: 'short'}}</td>
+        <td>{{delivery?.endTime | date: 'short'}}</td>
+        <td>{{delivery?.jobStatus}}</td>
+        <td>{{delivery.ownerID}}</td>
+        <td>{{delivery.duration}}</td>
+        <td>{{delivery.comments}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </mat-tab>
+
+  <mat-tab label="Completed Deliveries">
+    <div class="container-fluid">
+      <button mat-raised-button class="m-2" (click)="exportComplete()">Export</button>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Not Started">
+    <div class="container-fluid">
+      <button mat-raised-button class="m-2" (click)="exportNotStartedDeliveries()">Export</button>
+    </div>
+    <table class="table  table-bordered table-responsive" id="notStartedDeliveriesTable">
+      <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Customer Address</th>
+        <th>Phone Number</th>
+        <th>PolicyID</th>
+        <th>Policy Transaction Date</th>
+        <th>Policy Amount</th>
+        <th>Agent Name</th>
+        <th>Zone</th>
+        <th>Start Time</th>
+        <th>Finish Time</th>
+        <th>Status</th>
+        <th>Driver</th>
+        <th>Duration</th>
+        <th>TDD</th>
+        <th>Aging</th>
+        <th>Comments</th>
+        <th>Edit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let delivery of notStarted">
+        <td>{{delivery.customerFirstName}} {{delivery.customerLastName}}</td>
+        <td>{{delivery.addressLine1}}, {{delivery.addressLine2}}</td>
+        <td>{{delivery.phoneNumber}}</td>
+        <td>{{delivery.policyID}}</td>
+        <td>{{delivery.policyTransactionDate}}</td>
+        <td>{{delivery.policyAmount}}</td>
+        <td>{{delivery.agentName}}</td>
+        <td>{{delivery.zoneArea.name}}</td>
+        <td>{{delivery?.startTime | date: 'short'}}</td>
+        <td>{{delivery?.endTime | date: 'short'}}</td>
+        <td>{{delivery?.jobStatus}}</td>
+        <td>{{delivery.ownerID}}</td>
+        <td>{{delivery.duration}}</td>
+        <td>{{delivery?.ttd}}</td>
+        <td>{{delivery?.aging}}</td>
+        <td>{{delivery.comments}}</td>
+        <td><a routerLink="/edit-delivery/{{delivery.id}}" class="card-link">View Delivery</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </mat-tab>
+
+  <mat-tab label="Reports">
+      <app-reports
+      [drivers]="drivers"
+      ></app-reports>
+  </mat-tab>
+
+</mat-tab-group>
+

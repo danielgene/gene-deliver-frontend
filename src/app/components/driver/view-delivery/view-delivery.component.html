@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="card border-success" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{delivery?.customerFirstName}} {{delivery?.customerLastName}}</h5>
+      <h6 class="card-subtitle">Suburb: {{delivery?.zoneArea.name}}</h6>
+      <p class="card-text">Phone: {{delivery?.phoneNumber}}</p>
+      <p class="card-text">Amount: $ {{delivery?.policyAmount}}</p>
+      <p class="card-text">Add Date: {{delivery?.policyTransactionDate}}</p>
+      <p class="card-text">Policy ID: {{delivery?.policyID}}</p>
+      <p class="card-text">Agent Name: {{delivery?.agentName}}</p>
+      <div *ngIf="delivery?.jobStatus==1">
+        <button class="btn btn-success m-1" (click)="startDelivery()" >Start</button>
+      </div>
+      <div *ngIf="delivery?.jobStatus==2">
+        <button class="btn btn-success m-1" (click)="stopDelivery()">Stop</button>
+      </div>
+      <div *ngIf="delivery?.jobStatus==3">
+        <p><strong>Completed</strong></p>
+        <p>Start Time: {{delivery?.startTime | date: 'short'}}</p>
+        <p>Finish Time: {{delivery?.endTime | date: 'short'}}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card border-danger mt-3" *ngIf="delivery?.jobStatus==2 || delivery?.jobStatus==1" style="width: 18rem;">
+   <div class="card-body">
+     <h3>Add Comment</h3>
+     <form #comment="ngForm" (ngSubmit)="postComment()">
+       <div>
+         <mat-form-field>
+           <mat-label>Comment</mat-label>
+           <input matInput name="comment" required type="text" [(ngModel)]="model.comment">
+         </mat-form-field>
+         <div>
+           <button mat-raised-button type="submit">Add</button>
+         </div>
+       </div>
+     </form>
+   </div>
+  </div>
+  <div>
+    <h4>Comments</h4>
+    <div *ngFor="let deliveryComment of deliveryComments">
+      <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{deliveryComment.callTime | date: 'short'}}</div>
+        <div class="card-body text-dark">
+
+          <p class="card-text">{{deliveryComment.comment}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

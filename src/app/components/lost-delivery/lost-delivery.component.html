@@ -1,0 +1,35 @@
+<h4>Lost Deliveries</h4>
+<table class="table table-responsive">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Address Line 2</th>
+    <th>City</th>
+    <th>Phone Number</th>
+    <th>Policy Id</th>
+    <th>Policy Transaction Date</th>
+    <th>Policy Amount</th>
+    <th>Agent Name</th>
+    <th>EDD</th>
+    <th>Edit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let lost of lostDeliveries">
+    <td>{{lost.id}}</td>
+    <td>{{lost.customerFirstName}} {{lost.customerLastName}}</td>
+    <td>{{lost.addressLine1}}</td>
+    <td>{{lost.addressLine2}}</td>
+    <td>{{lost.city}}</td>
+    <td>{{lost.phoneNumber}}</td>
+    <td>{{lost.policyID}}</td>
+    <td>{{lost.policyTransactionDate}}</td>
+    <td>{{lost.policyAmount}}</td>
+    <td>{{lost.agentName}}</td>
+    <td>{{lost?.edd}}</td>
+    <td><a routerLink="/lost-delivery/{{lost.id}}">Edit</a> </td>
+  </tr>
+  </tbody>
+</table>

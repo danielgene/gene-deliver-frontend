@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card mt-3">
+        <div class="card-header">
+          <h2>Add new Zone</h2>
+        </div>
+        <form #zoneForm="ngForm" (ngSubmit)="addZone()">
+          <div class="m-3">
+            <mat-form-field>
+              <mat-label>Zone Name</mat-label>
+              <input matInput type="text" [(ngModel)]="model.name" name="name" required/>
+            </mat-form-field>
+          </div>
+          <div>
+            <button class="m-3" [disabled]="!zoneForm.valid" type="submit" mat-raised-button>Add Zone</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

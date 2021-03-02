@@ -1,0 +1,48 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="sidenav">
+  <div class="login-main-text">
+    <h1>Gene Delivery System <br> Login Page</h1>
+    <p>Login from here to access.</p>
+  </div>
+</div>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+      <form id="login-form" class="form" action="" method="post" #loginForm="ngForm" (ngSubmit)="login()">
+
+        <div class="alert-dark alert">
+          <p style="color: black">
+            Provide your gene email address eg someone@gene.co.zw
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>User Name</label>
+          <input type="email"
+                 [(ngModel)]="model.username"
+                 required name="username"
+                 id="username"
+                 class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            [(ngModel)]="model.password"
+            required
+            name="password"
+            id="password"
+            class="form-control">
+        </div>
+        <button [disabled]="!loginForm.valid" class="btn btn-dark" type="submit">Login</button>
+        <a class="btn btn-outline-primary ml-2" target="_blank" href="https://helpdesk.gene.co.zw/#/login/login">Can't Login</a>
+
+      </form>
+    </div>
+  </div>
+</div>
+

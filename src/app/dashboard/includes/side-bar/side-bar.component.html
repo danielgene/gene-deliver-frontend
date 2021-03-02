@@ -1,0 +1,150 @@
+<div class="main-sidebar">
+
+  <section style="overflow: no-content" class="sidebar">
+
+    <ul class="sidebar-menu" data-widget="tree">
+
+      <li class="active treeview">
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+      </li>
+
+      <li *ngIf="isAdmin()" class="treeview">
+        <a routerLinkActive="active" [routerLink]="['deliveries-overview']">
+          <i class="fa fa-ambulance"></i> <span>All Deliveries</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+      </li>
+
+      <li *ngIf="isAdmin()">
+        <a routerLinkActive="active" [routerLink]="['drivers']">
+          <i class="fa fa-group"></i>
+          <span>Users</span>
+          <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+        </a>
+      </li>
+
+      <li *ngIf="isAdmin()">
+        <a [routerLink]="['lost-delivery']">
+          <i class="fa fa-trash"></i>
+          <span>Lost Deliveries</span>
+          <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+        </a>
+      </li>
+
+      <li *ngIf="isAdmin()">
+        <a [routerLink]="['zones']">
+          <i class="fa fa-globe"></i>
+          <span>Zomes</span>
+          <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+        </a>
+      </li>
+
+      <li *ngIf="isAdmin()">
+        <a [routerLink]="['roles']">
+          <i class="fa fa-user-circle"></i>
+          <span>User Roles</span>
+          <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+        </a>
+      </li>
+
+
+      <li *ngIf="getUserType() ==4 &&  !isAdmin()">
+        <a [routerLink]="['deliveries-overview']">
+          <i class="fa fa-ambulance"></i>
+          <span>All My Deliveries</span>
+          <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+        </a>
+      </li>
+
+      <li *ngIf="getUserType() ==3 &&  !isAdmin()">
+        <a [routerLink]="['agent-home']">
+          <i class="fa fa-ambulance"></i>
+          <span>All My Deliveries</span>
+          <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+        </a>
+      </li>
+
+<!--      <li *ngIf="getUserType() ==4 &&  !isAdmin()">-->
+<!--        <a href="#">-->
+<!--          <i class="fa fa-files-o"></i>-->
+<!--          <span>Layout Options</span>-->
+<!--          <span class="pull-right-container">-->
+<!--              <span class="label label-primary pull-right">4</span>-->
+<!--            </span>-->
+<!--        </a>-->
+<!--      </li>-->
+
+
+      <li *ngIf="getUserType() ==4 &&  !isAdmin()">
+        <a  [routerLink]="['complete']">
+          <i class="fa fa-check"></i>
+          <span>Complete</span>
+          <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+        </a>
+      </li>
+
+
+      <li *ngIf="getUserType() ==4 &&  !isAdmin()">
+        <a [routerLink]="['incomplete']">
+          <i class="fa fa-hourglass"></i>
+          <span>Incomplete</span>
+          <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+        </a>
+      </li>
+
+
+
+
+    </ul>
+  </section>
+
+
+  <!--  <div *ngIf="getUserType()==1">-->
+
+  <!--    <a >All Deliveries</a>-->
+
+  <!--    <a  >Users</a>-->
+  <!--    <a  >Lost Deliveries</a>-->
+
+  <!--    <a >Zones</a>-->
+  <!--    <a >Roles</a>-->
+  <!--    <a >Lost Deliveries</a>-->
+  <!--  </div>-->
+  <!--  <div *ngIf="getUserType() ==4">-->
+  <!--    <a >All Deliveries</a>-->
+  <!--    <a  [routerLink]="['lost-delivery']">Lost Deliveries</a>-->
+  <!--  </div>-->
+  <!--  <div *ngIf="getUserType()==2">-->
+  <!--    <a *ngIf="!isAdmin()" ">All My Deliveries</a>-->
+  <!--    <a *ngIf="!isAdmin()">Completed</a>-->
+  <!--    <a *ngIf="!isAdmin()" >Incomplete</a>-->
+  <!--  </div>-->
+  <!--  <div *ngIf="getUserType()==3">-->
+  <!--    <a *ngIf="!isAdmin()" >All My Deliveries</a>-->
+  <!--  </div>-->
+  <!--  <a [routerLink]="['profile']">My Profile</a>-->
+  <!--  <a (click)="logout()">Logout</a>-->
+</div>

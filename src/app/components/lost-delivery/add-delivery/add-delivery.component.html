@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card mt-3">
+        <div class="card-header">
+          <h2>Correct Delivery</h2>
+        </div>
+        <div class="card-body">
+          <form #correctDeliveryForm="ngForm" (ngSubmit)="addDelivery(correctDeliveryForm)">
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >ID</label>
+                <input matInput class="form-control col-sm-4" name="id" type="number" [ngModel]="lostDelivery?.id"  readonly>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >First Name</label>
+                <input matInput class="form-control col-sm-4" name="customerFirstName" type="text" [ngModel]="lostDelivery?.customerFirstName"  readonly>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >Last Name</label>
+              <input matInput class="form-control col-sm-4" name="customerLastName" type="text" [ngModel]="lostDelivery?.customerLastName"  readonly>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >Customer ID</label>
+              <input matInput class="form-control col-sm-4" name="customerID" type="text" [ngModel]="lostDelivery?.customerID"  readonly>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >Address 1</label>
+              <input matInput class="form-control col-sm-4" name="addressLine1" type="text" [ngModel]="lostDelivery?.addressLine1"  >
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >Areas</label>
+              <input matInput class="form-control col-sm-4" name="addressLine2" type="text" [ngModel]="lostDelivery?.addressLine2" >
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >City</label>
+              <input matInput class="form-control col-sm-4" name="city" type="text" [ngModel]="lostDelivery?.city"  readonly>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >Phone</label>
+              <input matInput class="form-control col-sm-4" name="phoneNumber" type="text" [ngModel]="lostDelivery?.phoneNumber"  readonly>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >PolicyID</label>
+              <input matInput class="form-control col-sm-4" name="policyID" type="text" [ngModel]="lostDelivery?.policyID"  readonly>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >Date</label>
+              <input matInput class="form-control col-sm-4" name="policyTransactionDate" type="text" [ngModel]="lostDelivery?.policyTransactionDate"  readonly>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >Amount</label>
+              <input matInput class="form-control col-sm-4" name="policyAmount" type="number" [ngModel]="lostDelivery?.policyAmount"  readonly>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label text-sm-right" >Agent</label>
+              <input matInput class="form-control col-sm-4" name="agentName" type="text" [ngModel]="lostDelivery?.agentName"  readonly>
+            </div>
+            <div>
+              <button mat-raised-button type="submit">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

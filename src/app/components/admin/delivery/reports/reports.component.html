@@ -1,0 +1,126 @@
+<div class="m-3">
+  <form class="form-inline" #reportForm="ngForm" (ngSubmit)="getReport(reportForm)">
+
+    <div class="group-gap">
+      <div class="d-block my-3">
+        <div class="mb-3">
+          <label>Select Driver</label>
+          <select class="form-control" (change)="changeDriver($event)">
+            <option value="">Select Driver</option>
+            <option value="all">All</option>
+            <option *ngFor="let driver of drivers" [value]="driver.id">{{driver.firstName}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-gap ml-2">
+      <div class="d-block my-3">
+        <div class="mb-3">
+          <label>Select Delivery Status</label>
+          <select class="custom-select" (change)="changeStatus($event)">
+            <option value="0">All</option>
+            <option value="3">Complete</option>
+            <option value="2">In Progress</option>
+            <option value="1">Not Started</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-gap ml-2">
+      <div class="d-block my-3">
+        <div class="mb-3">
+          <label>Select Start Date</label>
+          <input required ngModel name="startDate" type="date" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="group-gap ml-2">
+      <div class="d-block my-3">
+        <div class="mb-3">
+          <label>Select End Date</label>
+          <input required ngModel name="endDate" type="date" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <button [disabled]="!reportForm.valid" type="submit" class="ml-2 mt-3 btn btn-primary">Search</button>
+  </form>
+  <br>
+  <hr>
+  <div *ngIf="isLoading">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading please wait</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="!isLoading">
+
+    <p style="font-size: 25px; font-weight: lighter">{{querySummary}}</p>
+
+    <div *ngIf="reportResult.length!=0">
+      <button class="btn btn-dark" (click)="exportReport()">Export Report</button>
+      <table class="table table-hover table-striped" id="reportTable">
+        <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Customer Address</th>
+          <th>Phone Number</th>
+          <th>PolicyID</th>
+          <th>Policy Transaction Date</th>
+          <th>Policy Amount</th>
+          <th>Agent Name</th>
+          <th>Zone</th>
+          <th>Start Time</th>
+          <th>Finish Time</th>
+          <th>Status</th>
+          <th>Driver</th>
+          <th>Duration</th>
+          <!--          <th>TDD</th>-->
+          <!--          <th>Aging</th>-->
+          <th>Comments</th>
+        </tr>
+        </thead>
+        <tbody>
+<!--        | date: 'short'-->
+        <tr *ngFor="let delivery of reportResult">
+          <td
+            (click)="showAlert(delivery.customerFirstName +' '+ delivery.customerLastName)">{{delivery.customerFirstName + " " + delivery.customerLastName  |shorten:12 |titlecase}}</td>
+          <td
+            (click)="showAlert(delivery.addressLine1+' '+delivery.addressLine2)">{{delivery.addressLine1 + ", " + delivery.addressLine2  |shorten:12}}</td>
+          <td (click)="showAlert(delivery.phoneNumber)">{{delivery.phoneNumber|shorten:12}}</td>
+          <td>{{delivery.policyID}}</td>
+          <td>{{delivery.policyTransactionDate|date:'short'}}</td>
+          <td>{{delivery.policyAmount}}</td>
+          <td>{{delivery.agentName |titlecase}}</td>
+          <td>{{delivery.zoneArea.name }}</td>
+          <td>{{delivery?.startTime }}</td>
+          <td>{{delivery?.endTime | date: 'short'}}</td>
+          <td>{{delivery?.jobStatus}}</td>
+          <td>{{delivery.ownerID | titlecase}}</td>
+          <td>{{delivery.duration}}</td>
+          <!--          <td>{{delivery?.ttd}}</td>-->
+          <!--          <td>{{delivery?.aging}}</td>-->
+          <td (click)="showAlert(delivery.comments)">{{delivery.comments |shorten:12}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="reportResult.length ==0">
+      <div class="d-flex justify-content-center">
+        <h3>No data found.</h3>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+

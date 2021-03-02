@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card m-3">
+      <div class="card-header">
+        <h3>Driver Details</h3>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">{{driver?.firstName}} {{driver?.lastName}}</h2>
+        <p class="card-text">{{driver?.phoneNumber}}</p>
+        <div *ngIf="driver?.accountType == 'driver'">
+          <div *ngIf="driver?.hasZone">
+            <p>Zone: <strong>{{zoneOwner?.zoneID}}</strong></p>
+          </div>
+          <div *ngIf="!driver?.hasZone">
+            <h3>Allocate a zone to the Driver</h3>
+            <select (change)="setActiveZone($event)" class="form-control">
+              <option *ngFor="let zone of zones" value="{{zone.id}}">{{zone.name}}</option>
+            </select>
+            <button (click)="assignDriver()" class="btn btn-outline-success m-3">Allocate</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

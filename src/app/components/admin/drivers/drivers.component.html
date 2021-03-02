@@ -1,0 +1,54 @@
+<div class="">
+  <div class="row">
+    <button mat-raised-button routerLink="/driver-add" class="mt-2 ml-2 mr-2" >Add Driver</button>
+    <button mat-raised-button routerLink="/swap-driver" class="mt-2">Swap Drivers</button>
+    <button mat-raised-button class="mt-2 ml-2 mr-2" routerLink="/admin-add">Add Admin</button>
+    <button mat-raised-button class="mt-2 ml-2 mr-2" routerLink="/agent-add">Add Agent</button>
+  </div>
+
+  <div class="">
+    <mat-tab-group>
+      <mat-tab label="Drivers" class="m-3">
+        <mat-accordion>
+          <div class="justify-content-center" *ngFor="let driver of allDrivers">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>Name: {{driver.firstName}}</mat-expansion-panel-header>
+              <mat-panel-description>
+                Phone: <strong><span>{{driver.phoneNumber}}</span></strong>
+                <br>
+              </mat-panel-description>
+              <p>Is Active: {{driver.active}}</p>
+              <p>Has Zone: {{driver.hasZone}}</p>
+              <mat-action-row>
+                <button mat-raised-button routerLink="/view-driver/{{driver.id}}">View Details</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+
+          </div>
+        </mat-accordion>
+      </mat-tab>
+      <mat-tab label="Agents">
+        <mat-accordion>
+          <div class="justify-content-center" *ngFor="let driver of allAgents">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>Name: {{driver.firstName}}</mat-expansion-panel-header>
+              <mat-panel-description>
+                Phone: <strong><span>{{driver.phoneNumber}}</span></strong>
+                <br>
+              </mat-panel-description>
+              <p>Is Active: {{driver.active}}</p>
+              <p>Has Zone: {{driver.hasZone}}</p>
+              <mat-action-row>
+                <button mat-raised-button routerLink="/view-driver/{{driver.id}}">View Details</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+
+          </div>
+        </mat-accordion>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <hr>
+
+
+</div>

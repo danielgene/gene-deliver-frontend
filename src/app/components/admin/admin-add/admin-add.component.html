@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6 mt-3">
+      <div class="justify-content-center">
+
+        <div class="card m-2">
+          <div class="card-header">
+            <h1 class="m-2">Add new Admin</h1>
+          </div>
+          <form #addDriverForm="ngForm" (ngSubmit)="addSuper()">
+            <div class="m-2">
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" [(ngModel)]="model.email" name="email" required/>
+              </mat-form-field>
+            </div>
+            <div class="m-2">
+              <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput type="text" [(ngModel)]="model.firstName" name="firstName" required/>
+              </mat-form-field>
+            </div>
+            <div class="m-2">
+              <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text" [(ngModel)]="model.lastName" name="lastName" required/>
+              </mat-form-field>
+            </div>
+            <div class="m-2">
+              <div>
+                <mat-form-field>
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput type="tel" [(ngModel)]="model.phoneNumber" name="phoneNumber" required/>
+                </mat-form-field>
+              </div>
+              <mat-form-field>
+                <label>User Password</label>
+                <input matInput type="password" [(ngModel)]="model.password" name="password" required/>
+              </mat-form-field>
+            </div>
+            <div class="m-2">
+              <mat-form-field>
+                <mat-label>Confirm Password</mat-label>
+                <input matInput type="password" [(ngModel)]="model.confirmPassword" name="confirmPassword" required>
+              </mat-form-field>
+            </div>
+            <div>
+              <button class="m-2" [disabled]="!addDriverForm.valid" type="submit" name="submitDriver" mat-raised-button>Add Admin</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

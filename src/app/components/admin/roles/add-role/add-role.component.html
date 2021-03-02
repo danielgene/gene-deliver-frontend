@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6 mt-3">
+      <div class="justify-content-center">
+
+        <div class="card m-2">
+          <div class="card-header">
+            <h1 class="m-2">Add new Role</h1>
+          </div>
+          <form #addRoleForm="ngForm" (ngSubmit)="addRole()">
+            <div class="m-2">
+              <mat-form-field>
+                <mat-label>Role Name</mat-label>
+                <input matInput type="text" [(ngModel)]="model.name" name="name" required/>
+              </mat-form-field>
+            </div>
+            <div>
+              <button class="m-2" [disabled]="!addRoleForm.valid" type="submit" name="submitRole" mat-raised-button>Add Admin</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

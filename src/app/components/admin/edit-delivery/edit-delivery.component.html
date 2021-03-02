@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="justify-content-center m-3">
+    <div class="card border-success" style="width: 30rem;">
+      <div class="card-header"><h2>Edit Delivery</h2></div>
+      <div class="card-body">
+        <form #editDeliveryForm="ngForm" (ngSubmit)="editDelivery(editDeliveryForm)">
+          <div class="row m-3">
+            <mat-form-field>
+              <mat-label>ID</mat-label>
+              <input matInput type="number" [ngModel]="delivery?.id"  required readonly name="id"/>
+            </mat-form-field>
+          </div>
+          <div class="row m-3">
+            <mat-form-field>
+              <mat-label>First Name</mat-label>
+              <input matInput type="text" [ngModel]="delivery?.customerFirstName" required name="customerFirstName"/>
+            </mat-form-field>
+          </div>
+          <div class="row m-3">
+            <mat-form-field>
+              <mat-label>Last Name</mat-label>
+              <input matInput type="text" [ngModel]="delivery?.customerLastName" required name="customerLastName"/>
+            </mat-form-field>
+          </div>
+          <div class="row m-3">
+            <mat-form-field>
+              <mat-label>Phone Number</mat-label>
+              <input matInput type="text" [ngModel]="delivery?.phoneNumber" required name="phoneNumber">
+            </mat-form-field>
+          </div>
+          <div class="row m-3">
+            <mat-form-field>
+              <mat-label>Address1</mat-label>
+              <input matInput type="text" [ngModel]="delivery?.addressLine1" required name="addressLine1">
+            </mat-form-field>
+          </div>
+          <div class="row m-3">
+            <mat-form-field>
+              <mat-label>Area</mat-label>
+              <input matInput type="text" [ngModel]="delivery?.addressLine2" required name="addressLine2"/>
+            </mat-form-field>
+          </div>
+          <div class="row m-3">
+            <button mat-raised-button type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card border-danger m-3" style="width: 15rem;">
+      <button mat-raised-button (click)="markDone()">Mark Done</button>
+    </div>
+  </div>
+</div>

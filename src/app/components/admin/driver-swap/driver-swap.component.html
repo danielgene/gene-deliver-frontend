@@ -1,0 +1,32 @@
+
+  <form #form="ngForm" (ngSubmit)="swapDriver()">
+    <div class="container row mt-3">
+  <div class="col-4">
+    <h4>Select Driver 1</h4>
+    <mat-form-field>
+      <mat-label>Driver 1</mat-label>
+      <mat-select required [(value)]="driver1">
+        <mat-option *ngFor="let driver11 of activeDrivers" [value]="driver11.id">
+          {{driver11.firstName}} {{driver11.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <hr>
+  <div class="col-4">
+    <h4>Select Driver 2</h4>
+    <mat-form-field>
+      <mat-label>Driver 1</mat-label>
+      <mat-select required [(value)]="driver2">
+        <mat-option *ngFor="let driver22 of activeDrivers" [value]="driver22.id">
+          {{driver22.firstName}} {{driver22.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+    </div>
+    <div class="container row">
+      <button mat-raised-button [disabled]="!form.valid" type="submit">Swap</button>
+    </div>
+  </form>
+

@@ -1,0 +1,151 @@
+<div class="mat-elevation-z8">
+  <table class="table table-hover table-striped" mat-table matSort [dataSource]="completedDeliveriesDataSource">
+
+    <ng-container
+      class="p-2"
+      matColumnDef="customerFirstName">
+      <th mat-header-cell class="p-2" *matHeaderCellDef mat-sort-header>Customer Name</th>
+      <td mat-cell
+          class="p-2"
+          (click)="showAlert(element.customerFirstName)"
+          *matCellDef="let element"> {{element.customerFirstName  | titlecase|shorten:12}} </td>
+
+    </ng-container>
+
+    <ng-container
+      class="p-2"
+      matColumnDef="customerLastName">
+      <th mat-header-cell class="p-2" *matHeaderCellDef mat-sort-header>Customer Name</th>
+      <td mat-cell
+          class="p-2"
+          (click)="showAlert(element.customerFirstName)"
+          *matCellDef="let element"> {{element.customerLastName | titlecase|shorten:12}} </td>
+
+    </ng-container>
+
+
+    <ng-container class="p-2" matColumnDef="policyTransactionDate">
+      <th class="p-2" mat-sort-header mat-header-cell *matHeaderCellDef>Transaction Date</th>
+      <td class="p-2" mat-cell *matCellDef="let element"> {{element.policyTransactionDate|date:'short'}} </td>
+    </ng-container>
+
+    <ng-container class="p-2" matColumnDef="addressLine1">
+      <th class="p-2" mat-sort-header
+          mat-header-cell
+          *matHeaderCellDef>Phone
+      </th>
+      <td class="p-2" mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+    </ng-container>
+
+    <ng-container class="p-2" matColumnDef="addressLine2">
+      <th class="p-2" mat-sort-header mat-header-cell *matHeaderCellDef> Policy Id</th>
+      <td class="p-2" mat-cell *matCellDef="let element"> {{element.policyID}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="policyAmount">
+      <th class="p-2" mat-sort-header mat-header-cell *matHeaderCellDef>Policy Amount</th>
+      <td class="p-2" mat-cell *matCellDef="let element"> {{+element.policyAmount}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="startTime">
+      <th class="p-2"
+          mat-sort-header
+          mat-header-cell
+          *matHeaderCellDef>Start Time
+      </th>
+      <td class="p-2" mat-cell *matCellDef="let element"> {{element.startTime| date:'short'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endTime">
+      <th class="p-2" mat-sort-header mat-header-cell *matHeaderCellDef>Finish Time</th>
+      <td class="p-2" mat-cell *matCellDef="let element"> {{element.endTime | date:'short'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Agent Name">
+      <th class="p-2"
+          mat-sort-header
+          mat-header-cell *matHeaderCellDef>Agent Name
+      </th>
+      <td class="p-2"
+          (click)="showAlert(element?.agentName)"
+          mat-cell *matCellDef="let element"> {{element?.agentName | shorten:12 }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th class="p-2"
+          mat-sort-header
+          mat-header-cell *matHeaderCellDef>Address
+      </th>
+      <td class="p-2" mat-cell
+          (click)="showAlert(element.addressLine1+ '\n'+ element.addressLine2)"
+          *matCellDef="let element"> {{element.addressLine1 + '\n' + element.addressLine2 | shorten:20 }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Status">
+      <th class="p-2"
+          mat-sort-header
+          mat-header-cell *matHeaderCellDef>Status
+      </th>
+      <td class="p-2"
+          mat-cell
+          *matCellDef="let element">
+
+        <button class="btn  {{element.jobStatus === 'Completed'?'btn-success':
+                                element.jobStatus === 'Not Started'?'btn-danger':'btn-warning' }}"></button>
+        {{element.jobStatus}}
+
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="driver">
+      <th class="p-2"
+          mat-sort-header
+          mat-header-cell *matHeaderCellDef>Driver
+      </th>
+      <td class="p-2"
+          mat-cell
+          *matCellDef="let element"> {{element?.ownerID}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+      <th class="p-2"
+          mat-sort-header
+          mat-header-cell
+          *matHeaderCellDef>Duration
+      </th>
+      <td class="p-2"
+          mat-cell
+          *matCellDef="let element"> {{element?.duration}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="comments">
+      <th class="p-2"
+          mat-sort-header
+          mat-header-cell *matHeaderCellDef>Comments
+      </th>
+      <td class="p-2"
+          (click)="showAlert(element?.comments)"
+          mat-cell
+          *matCellDef="let element"> {{element?.comments|shorten:20}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th class="p-2" mat-header-cell *matHeaderCellDef>Edit</th>
+      <td class="p-2" mat-cell
+          *matCellDef="let element">
+        <a routerLink="/edit-delivery/{{element.id}}" class="btn btn-outline-info">View Delivery</a>
+      </td>
+    </ng-container>
+
+    <tr class="p-2" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr class="p-2" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 40]" showFirstLastButtons></mat-paginator>
+
+</div>

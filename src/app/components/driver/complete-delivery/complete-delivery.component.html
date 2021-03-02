@@ -1,0 +1,28 @@
+<h3>Your Incomplete Deliveries</h3>
+
+<div *ngFor="let delivery of allDeliveries" class="">
+  <div class="card border-success m-3" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{delivery.customerFirstName}} {{delivery.customerLastName}}</h5>
+      <h6 class="card-subtitle">Surburb: {{delivery.zoneArea.name}}</h6>
+
+      <p class="card-text">Phone: {{delivery.phoneNumber}}</p>
+      <p class="card-text">Amount: $ {{delivery.policyAmount}}</p>
+      <p class="card-text">Add Date: {{delivery.policyTransactionDate}}</p>
+      <p class="card-text">Policy ID: {{delivery.policyID}}</p>
+      <p class="card-text">Agent Name: {{delivery.agentName}}</p>
+      <div *ngIf="delivery?.jobStatus == 1">
+        <p><strong>Delivery Not Started Yet</strong></p>
+      </div>
+      <div *ngIf="delivery?.jobStatus == 2">
+        <p><strong>Delivery In Progress</strong></p>
+      </div>
+      <div *ngIf="delivery?.jobStatus == 3">
+        <p><strong>Delivery Completed</strong></p>
+        <p>Start Time: {{delivery?.startTime | date: 'short'}}</p>
+        <p>Finish Time: {{delivery?.endTime | date: 'short'}}</p>
+      </div>
+      <a routerLink="/view-delivery/{{delivery.id}}"  class="card-link">View Delivery</a>
+    </div>
+  </div>
+</div>

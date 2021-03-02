@@ -1,0 +1,23 @@
+<mat-sidenav-container>
+  <mat-sidenav opened mode="push" #sidenav>
+    <div>
+      <mat-list-item><mat-icon>home</mat-icon></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-nav-list *ngIf="isLoggedIn()">
+        <a mat-list-item *ngIf="isAdminAccont()" [routerLink]="['']" routerLinkActive="$router_link-active$">Home</a>
+        <a mat-list-item *ngIf="isAdminAccont()" [routerLink]="['delivery']">Deliveries</a>
+        <a mat-list-item>Hello</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item *ngIf="isAdminAccont()" [routerLink]="['drivers']" >Drivers</a>
+
+        <a mat-raised-button *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
